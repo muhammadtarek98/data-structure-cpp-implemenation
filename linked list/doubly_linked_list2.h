@@ -1,7 +1,3 @@
-//
-// Created by muhammad on 21/03/25.
-//
-
 #ifndef DOUBLY_LINKED_LIST2_H
 #define DOUBLY_LINKED_LIST2_H
 #include<bits/stdc++.h>

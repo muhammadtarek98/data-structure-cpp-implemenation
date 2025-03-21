@@ -1,123 +1,110 @@
-#include<bits/stdc++.h>
+#include"queue_linked_list.h"
 using namespace std;
-//my code
-class queue_linked_list
+queue_linked_list::queue_linked_list()
 {
-private:
-    struct node
+    Front=rear=NULL;
+    Length=0;
+}
+queue_linked_list::~queue_linked_list()
+{}
+bool queue_linked_list::IsEmpty()
+{
+    if(Front==NULL&&rear==NULL&&Length==0)
     {
-        int item;
-        node *next;
-    };
-    node *Front,*rear;
-    int Length;
-public:
-    queue_linked_list()
-    {
-        Front=rear=NULL;
-        Length=0;
+        return true;
     }
-    ~queue_linked_list()
-    {}
-    bool IsEmpty()
+    return false;
+}
+void queue_linked_list::enqueue(int element)
+{
+    if(IsEmpty())
     {
-        if(Front==NULL&&rear==NULL&&Length==0)
-        {
-            return true;
-        }
-        return false;
+        Front=new node;
+        Front->item=element;
+        Front->next=NULL;
+        rear=Front;
+        Length++;
     }
-    void enqueue(int element)
+    else
     {
-        if(IsEmpty())
-        {
-            Front=new node;
-            Front->item=element;
-            Front->next=NULL;
-            rear=Front;
-            Length++;
-        }
-        else
-        {
-            node *nextelement=new node;
-            nextelement->item=element;
-            nextelement->next=NULL;
-            rear->next=nextelement;
-            rear=nextelement;
-            Length++;
-        }
+        node *nextelement=new node;
+        nextelement->item=element;
+        nextelement->next=NULL;
+        rear->next=nextelement;
+        rear=nextelement;
+        Length++;
+    }
 
-    }
-    void dequeue()
-    {
-        node *temp=new node;
-        if(IsEmpty())
-            {
-                cout<<"Queue is empty"<<endl;
-            }
-        else if(Length==1)
-         {
-            Front=NULL;
-            rear=NULL;
-            Length--;
-         }
-        else
-            {
-             temp=Front;
-             Front=Front->next;
-             temp->next=NULL;
-             Length--;
-             delete temp;
-            }
-        }
-    int get_front()
-    {
-        if(IsEmpty())
+}
+void queue_linked_list::dequeue()
+{
+    node *temp=new node;
+    if(IsEmpty())
         {
-            cout<<"queue empty"<<endl;
-            return 0;
+            cout<<"Queue is empty"<<endl;
         }
-        return Front->item;
-    }
-    int get_rear()
-    {
-        if(IsEmpty())
+    else if(Length==1)
+     {
+        Front=NULL;
+        rear=NULL;
+        Length--;
+     }
+    else
         {
-            cout<<"queue empty"<<endl;
-            return 0;
+         temp=Front;
+         Front=Front->next;
+         temp->next=NULL;
+         Length--;
+         delete temp;
         }
-        return rear->item;
     }
-    void clearr()
+int queue_linked_list::get_front()
+{
+    if(IsEmpty())
     {
-        node *cur;
-        while(Front!=NULL)
+        cout<<"queue empty"<<endl;
+        return 0;
+    }
+    return Front->item;
+}
+int queue_linked_list::get_rear()
+{
+    if(IsEmpty())
+    {
+        cout<<"queue empty"<<endl;
+        return 0;
+    }
+    return rear->item;
+}
+void queue_linked_list::clearr()
+{
+    node *cur;
+    while(Front!=NULL)
+    {
+        cur=Front;
+        Front=Front->next;
+        delete cur;
+    }
+    rear =NULL;
+    Length=0;
+}
+void queue_linked_list::print()
+{
+    node *cur=Front;
+    while(cur!=NULL)
+    {
+        cout<<cur->item;
+        if(cur->next!=NULL)
         {
-            cur=Front;
-            Front=Front->next;
-            delete cur;
+            cout<<"->";
         }
-        rear =NULL;
-        Length=0;
+        cur=cur->next;
     }
-    void print()
-    {
-        node *cur=Front;
-        while(cur!=NULL)
-        {
-            cout<<cur->item;
-            if(cur->next!=NULL)
-            {
-                cout<<"->";
-            }
-            cur=cur->next;
-        }
-    }
-    int getsize()
-    {
-        return Length;
-    }
-};
+}
+int queue_linked_list::getsize()
+{
+    return Length;
+}
 int main()
 {
  queue_linked_list q;

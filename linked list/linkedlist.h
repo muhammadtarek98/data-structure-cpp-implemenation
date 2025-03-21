@@ -1,14 +1,15 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 #include<bits/stdc++.h>
+struct node
+{
+    int item;
+    node *next;
+};
 class linked_list
 {
 private:
-    struct node
-    {
-        int item;
-        node *next;
-    };
+
     node *first,*last;
     int length;
 public:

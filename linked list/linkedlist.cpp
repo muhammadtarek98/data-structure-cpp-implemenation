@@ -113,22 +113,22 @@ void linked_list::removefront()
   length--;
 }
 int linked_list::searchelement(int element)
+{
+  node *cur=first;
+  int pos=0;
+  while (cur!=NULL)
+  {
 
-   node *cur=first;
-   int pos=0;
-   while (cur!=NULL)
-   {
-
-     if(cur->item==element)
-     {
-       return pos;
-       break;
-     }
-     cur=cur->next;
-     pos++;
-   }
-   return -1;
-
+    if(cur->item==element)
+    {
+      return pos;
+      break;
+    }
+    cur=cur->next;
+    pos++;
+  }
+  return -1;
+}
 void linked_list::removeend()
 {
   node *cur=first->next;

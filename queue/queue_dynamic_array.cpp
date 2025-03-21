@@ -1,16 +1,6 @@
-#include <iostream>
-#include <cassert>
+#include "queue_dynamic_array.h"
 using namespace std;
-class arrayQueueType
-{
-	int rear;
-	int Front;
-	int length;
-	int *arr;
-	int maxSize;
-
-public:
-	arrayQueueType(int size) {
+arrayQueueType::arrayQueueType(int size) {
 		if (size <= 0)
 			maxSize = 100;
 		else
@@ -19,99 +9,92 @@ public:
 		arr = new int[maxSize+1];
 		rear = maxSize - 1;
 		length = 0;
-	}
-	int isEmpty()
+}
+int arrayQueueType::isEmpty()
+{
+	return length == 0;
+}
+bool arrayQueueType::isFull()
+{
+	return length == maxSize;
+}
+void arrayQueueType::addQueue(int Element)
+{
+	if (isFull())
 	{
-		return length == 0;
+		cout << "Queue Full Can't Enqueue ...!";
 	}
-	bool isFull()
+	else
 	{
-		return length == maxSize;
+		rear = (rear + 1) % maxSize;
+		arr[rear] = Element;
+		length++;
 	}
-	void addQueue(int Element)
+
+
+}
+void arrayQueueType::deleteQueue()
+{
+	if (isEmpty())
 	{
-		if (isFull())
+		cout << "Empty Queue Can't Dequeue ...!";
+	}
+	else
+	{
+		Front = (Front + 1) % maxSize;
+		--length;
+
+	}
+}
+int arrayQueueType::frontQueue()
+{
+	assert(!isEmpty());
+	return arr[Front];
+}
+
+int arrayQueueType::rearQueue()
+{
+	assert(!isEmpty());
+	return arr[rear];
+}
+void arrayQueueType::printQueue()
+{
+	if (!isEmpty()) {
+		for (int i = Front; i != rear; i = (i + 1) % maxSize)
 		{
-			cout << "Queue Full Can't Enqueue ...!";
+			cout << arr[i] << " ";
 		}
-		else
-		{
-			rear = (rear + 1) % maxSize;
-			arr[rear] = Element;
-			length++;
-		}
-
-
+		cout << arr[rear];
 	}
-	void deleteQueue()
+	else
+		cout << "Empty Queue";
+}
+
+
+int arrayQueueType::queueSearch(int element) {
+	int pos = -1;
+	if (!isEmpty())
 	{
-		if (isEmpty())
-		{
-			cout << "Empty Queue Can't Dequeue ...!";
-		}
-		else
-		{
-			Front = (Front + 1) % maxSize;
-			--length;
-
-		}
-
-
-	}
-	int frontQueue()
-	{
-		assert(!isEmpty());
-		return arr[Front];
-	}
-
-	int rearQueue()
-	{
-		assert(!isEmpty());
-		return arr[rear];
-	}
-
-
-	void printQueue()
-	{
-		if (!isEmpty()) {
-			for (int i = Front; i != rear; i = (i + 1) % maxSize)
+		for (int i = Front; i != rear; i = (i + 1) % maxSize)
+			if (arr[i] == element)
 			{
-				cout << arr[i] << " ";
+				pos = i;
+				break;
 			}
-			cout << arr[rear];
-		}
-		else
-			cout << "Empty Queue";
-	}
-
-
-	int queueSearch(int element) {
-		int pos = -1;
-		if (!isEmpty())
+		if (pos == -1)
 		{
-			for (int i = Front; i != rear; i = (i + 1) % maxSize)
-				if (arr[i] == element)
-				{
-					pos = i;
-					break;
-				}
-			if (pos == -1)
-			{
-				if (arr[rear] == element)
-					pos = rear;
-			}
+			if (arr[rear] == element)
+				pos = rear;
 		}
-		else
-			cout << "Q is empty ! " << endl;
-		return pos;
 	}
+	else
+		cout << "Q is empty ! " << endl;
+	return pos;
+}
 
-
-	~arrayQueueType() {
-		delete[]arr;
-	}
-};
-
+arrayQueueType::~arrayQueueType() {
+	delete[]arr;
+}
 int main()
 {
 	arrayQueueType q1(5);
