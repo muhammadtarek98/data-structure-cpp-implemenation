@@ -11,8 +11,8 @@ include_directories(stack)
 
 add_executable(data_structure_c_implemenation_
     "binary search tree/binary_search_tree.cpp"
-        "linked list/doubly linked list.cpp"
-    "linked list/doubly linked list2.cpp"
+        "linked list/doubly_linked_list.cpp"
+    "linked list/doubly_linked_list2.cpp"
     "linked list/linkedlist.cpp"
     "linked list/listSTL.cpp"
     "queue/circular queue dynamic array.cpp"

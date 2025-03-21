@@ -1,25 +1,15 @@
-#include<bits/stdc++.h>
+#include"doubly_linked_list.h"
 using namespace std;
 //my code
-class doubly_linkedlist
-{
-private:
-  struct node{
-    int item;
-    node *prev,*next;
-  };
-  node *first,*last;
-  int length;
-public:
-  doubly_linkedlist()
+doubly_linkedlist::doubly_linkedlist()
   {
     first=NULL;
     last=NULL;
     length=0;
   }
-  ~doubly_linkedlist()
+doubly_linkedlist::~doubly_linkedlist()
   {}
-  bool IsEmpty()
+bool doubly_linkedlist::IsEmpty()
   {
     if(length==0)
     {
@@ -27,7 +17,7 @@ public:
     }
     return false;
   }
-  void insertfirst(int element)
+  void doubly_linkedlist::insertfirst(int element)
   {
     node *newnode=new node();
     newnode->item=element;
@@ -45,9 +35,10 @@ public:
     }
     length++;
   }
-  void insertlast(int element)
+  void doubly_linkedlist::insertlast(int element)
   {
     node *newnode=new node();
+    newnode->item=element;
     if(length==0)
     {
       first=last=newnode;
@@ -62,7 +53,7 @@ public:
     }
     length++;
   }
-  void insertAt(int pos,int element)
+  void doubly_linkedlist::insertAt(int pos,int element)
    {
     if(pos<0||pos>length)
     {
@@ -97,7 +88,7 @@ public:
     }
     length++;
    }
-   void removefront()
+   void doubly_linkedlist::removefront()
    {
      if(length==0)
      {
@@ -118,7 +109,7 @@ public:
      }
      length--;
    }
-   void removeend()
+   void doubly_linkedlist::removeend()
    {
      if(length==0)
      {
@@ -139,7 +130,7 @@ public:
      }
      length--;
    }
-   void removeAt(int element)
+   void doubly_linkedlist::removeAt(int element)
     {
       if(length==0)
       {
@@ -178,7 +169,7 @@ public:
       }
       length--;
     }
-    void print()
+    void doubly_linkedlist::print()
     {
       node *cur=first;
       while (cur!=NULL)
@@ -187,7 +178,7 @@ public:
         cur=cur->next;
       }
     }
-    void reverseprint()
+    void doubly_linkedlist::reverseprint()
     {
       node  *cur=last;
       while (cur != NULL)
@@ -196,7 +187,6 @@ public:
         cur=cur->prev;
       }
     }
-};
 int main()
 {
 

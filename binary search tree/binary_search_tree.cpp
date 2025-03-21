@@ -1,9 +1,5 @@
-#include <iostream>
-#include <cassert>
 #include "binary_search_tree.h"
 using namespace std;
-
-
 binarySearchTreeType::binarySearchTreeType()
 {
 	root = NULL;
