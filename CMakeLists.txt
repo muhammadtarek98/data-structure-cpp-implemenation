@@ -10,7 +10,7 @@ include_directories(queue)
 include_directories(stack)
 
 add_executable(data_structure_c_implemenation_
-    "binary search tree/binary search tree.cpp"
+    "binary search tree/binary_search_tree.cpp"
         "linked list/doubly linked list.cpp"
     "linked list/doubly linked list2.cpp"
     "linked list/linkedlist.cpp"
