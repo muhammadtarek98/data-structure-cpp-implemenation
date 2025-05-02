@@ -16,10 +16,10 @@ This project provides a collection of C++ implementations for several fundamenta
 ## Features
 
 - **Educational Resource**: Clear, modular implementations that serve as both a learning tool and a reference.
-- **Modular Code Organization**: Each data structure is implemented separately to ease navigation and reuse.
+- **Modular Code Organisation**: Each data structure is implemented separately to ease navigation and reuse.
 - **CMake Support**: Comes with a `CMakeLists.txt` file to streamline the build process.
 - **Lightweight**: Minimal dependencies ensure easy compilation and portability.
 
 ### Prerequisites
 
-- A C++ compiler that supports C++17 (or later).
+- A C++ compiler that supports C++14 (or later).
