@@ -1,8 +1,5 @@
 # Data Structure C++ implementation
 ## Table of Contents
-## Overview
-
-This project provides a collection of C++ implementations for several fundamental data structures and algorithms. The goal is to demonstrate how these structures work internally, making the code a useful reference for learning and future enhancements.
 
 ## Implemented Data Structures
 
